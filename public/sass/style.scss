@@ -1,0 +1,82 @@
+h1 {
+  margin: 0;
+  padding: 10px;
+  color: white;
+  background-color: black;
+}
+
+h2  {
+  margin: 0;
+  padding: 10px;
+}
+
+p {
+  margin: 0;
+  padding: 10px;
+
+}
+
+header {
+
+  margin-bottom: 20px;
+
+
+}
+
+nav {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  width: 20%;
+}
+
+article {
+  padding: 0;
+  margin: 0;
+  float: right;
+  width: 80%;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.halfpage {
+  text-align: center;
+  width: 50%;
+  float: left;
+}
+
+
+.halfpage:nth-of-type(1) {
+  background-color: grey;
+}
+
+.halfpage:nth-of-type(2) {
+  background-color: green;
+}
+
+.bookcover {
+  width: 18%;
+  display: inline-block;
+  float: left;
+}
+
+.infowrap {
+  width: 82%;
+  float: right;
+  display: block;
+}
+
+.bookwrap {
+overflow: auto;
+ margin-bottom: 20px;
+  clear: both;
+}

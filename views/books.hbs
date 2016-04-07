@@ -1,0 +1,35 @@
+<div class='container'>
+  <nav>
+    <div class='authorlink'>
+      <h2>Authors</h2>
+    </div>
+    <div class='booklink'>
+      <h2>Books</h2>
+  {{#books}}
+  <a href="/books/{{id}}"><p>{{title}}</p></a><br>
+  {{/books}}
+    </div>
+  </nav>
+
+  <article>
+
+    {{#books}}
+
+    <div class='bookwrap'>
+      <img class='bookcover' src="{{cover}}" />
+
+      <div class='infowrap'>
+        <h1>{{title}}</h1>
+        <h2>{{genre}}</h2>
+        <p>
+          {{description}}
+        </p>
+      </div>
+
+    </div>
+
+    {{/books}}
+
+  </article>
+
+</div>
