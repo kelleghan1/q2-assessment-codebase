@@ -1,0 +1,22 @@
+{
+  "name": "galvanize-reads",
+  "version": "1.0.0",
+  "description": "Put your summary here!",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelleghan1/galvanize-reads.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kelleghan1/galvanize-reads/issues"
+  },
+  "homepage": "https://github.com/kelleghan1/galvanize-reads#readme"
+}
