@@ -1,8 +1,14 @@
+a {
+  text-decoration: none; }
+
 h1 {
   margin: 0;
   padding: 10px;
   color: white;
   background-color: black; }
+
+.container {
+  clear: both; }
 
 h2 {
   margin: 0;
@@ -16,12 +22,29 @@ h4 {
   margin: 0;
   padding: 10px; }
 
+.logo {
+  margin: 0 15px 0 0;
+  float: left; }
+
+.addlink {
+  float: right; }
+
 p {
   margin: 0;
   padding: 10px; }
 
+.infowrap > p {
+  text-align: justify; }
+
+.authorinfowrap > p {
+  text-align: justify; }
+
+.landing {
+  width: 100%; }
+
 header {
-  margin-bottom: 20px; }
+  background-color: black;
+  overflow: auto; }
 
 .longinput {
   width: 300px;
@@ -55,12 +78,6 @@ a {
   width: 50%;
   float: left; }
 
-.halfpage:nth-of-type(1) {
-  background-color: grey; }
-
-.halfpage:nth-of-type(2) {
-  background-color: green; }
-
 .bookcover {
   width: 18%;
   display: inline-block;
@@ -76,6 +93,9 @@ a {
   float: right;
   display: block; }
 
+.infowrap > form {
+  padding-left: 10px; }
+
 .authorinfowrap {
   width: 85%;
   float: right;
@@ -83,5 +103,11 @@ a {
 
 .bookwrap {
   overflow: auto;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   clear: both; }
+
+.landlink {
+  top: 110px;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white; }
