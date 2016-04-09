@@ -11,13 +11,14 @@
     <a href="/books/{{id}}"><p>{{title}}</p></a>
     {{/books}}
 
-
   </nav>
+
   <article>
 
     {{#authors}}
 
     <div class='bookwrap'>
+
       <a href="/authors/{{id}}">
         <img class='portrait' src="{{portrait}}" />
       </a>
@@ -29,13 +30,19 @@
         </a>
         {{#each titles}}
         <h3>{{this}}</h2>
-          {{/each}}        <p>{{biography}}</p>
+          {{/each}}
+          <p>{{biography}}</p>
+          <form action="/authors/delete/{{id}}" method="post">
+            <input type="submit" value="Delete Author">
+          </form>
+        </div>
+
+
+
       </div>
 
-    </div>
+      {{/authors}}
 
-    {{/authors}}
+    </article>
 
-  </article>
-
-</div>
+  </div>

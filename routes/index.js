@@ -27,6 +27,16 @@ router.get('/authors/add', function(req, res, next) {
   })
 });
 
+router.post('/authors/delete/:id', function(req, res, next) {
+  knex('authors')
+  .where('id', req.params.id)
+  .del()
+  .then(function() {
+    res.redirect('/authors')
+  })
+})
+
+
 router.get('/authors', function(req, res, next) {
   var authorselect = [];
 
@@ -144,14 +154,14 @@ router.get('/books/add', function(req, res, next) {
   })
 });
 
-// router.get('/books/delete/{{id}}', function(req, res, next) {
-//   knex('books')
-//   .where('id', req.params.id)
-//   .del()
-//   .then(function() {
-//     res.redirect('/books')
-//   })
-// })
+router.post('/books/delete/:id', function(req, res, next) {
+  knex('books')
+  .where('id', req.params.id)
+  .del()
+  .then(function() {
+    res.redirect('/books')
+  })
+})
 
 router.get('/books', function(req, res, next) {
   var bookselect = [];
