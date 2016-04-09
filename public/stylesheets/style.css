@@ -8,6 +8,10 @@ h2 {
   margin: 0;
   padding: 10px; }
 
+h3 {
+  margin: 0;
+  padding: 10px; }
+
 p {
   margin: 0;
   padding: 10px; }
@@ -16,10 +20,12 @@ header {
   margin-bottom: 20px; }
 
 nav {
+  text-align: right;
+  overflow: hidden;
   display: inline-block;
   padding: 0;
-  margin: 0;
-  width: 20%; }
+  margin-right: 2%;
+  width: 18%; }
 
 article {
   padding: 0;
@@ -52,8 +58,18 @@ a {
   display: inline-block;
   float: left; }
 
+.portrait {
+  width: 15%;
+  display: inline-block;
+  float: left; }
+
 .infowrap {
   width: 82%;
+  float: right;
+  display: block; }
+
+.authorinfowrap {
+  width: 85%;
   float: right;
   display: block; }
 

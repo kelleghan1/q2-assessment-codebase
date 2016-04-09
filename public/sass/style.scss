@@ -10,6 +10,12 @@ h2  {
   padding: 10px;
 }
 
+h3  {
+  margin: 0;
+  padding: 10px;
+}
+
+
 p {
   margin: 0;
   padding: 10px;
@@ -17,17 +23,16 @@ p {
 }
 
 header {
-
   margin-bottom: 20px;
-
-
 }
 
 nav {
+  text-align: right;
+  overflow: hidden;
   display: inline-block;
   padding: 0;
-  margin: 0;
-  width: 20%;
+  margin-right: 2%;
+  width: 18%;
 }
 
 article {
@@ -69,14 +74,26 @@ a {
   float: left;
 }
 
+.portrait {
+  width: 15%;
+  display: inline-block;
+  float: left;
+}
+
 .infowrap {
   width: 82%;
   float: right;
   display: block;
 }
 
+.authorinfowrap {
+  width: 85%;
+  float: right;
+  display: block;
+}
+
 .bookwrap {
-overflow: auto;
- margin-bottom: 20px;
+  overflow: auto;
+  margin-bottom: 20px;
   clear: both;
 }

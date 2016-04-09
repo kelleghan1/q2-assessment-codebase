@@ -23,7 +23,7 @@ exports.seed = function(knex, Promise) {
       first_name: 'Steve',
       last_name: 'Holden',
       biography: "Steve Holden is a consultant, advising clients on system and network architectures and the design and implementation of programmed web systems. He also teaches classes on TCP/IP, network security, database and programming topics, and is the author of 'Python Web Programming', the O'Reilly School of Technology's 'Certificate series in Python' and O'Reilly Media's 'Intermediate Python' video series.",
-      portrait: 'https://s3-us-west-2.amazonaws.com/assessment-images/galvanize_reads/photos/anna_ravenscroft.jpg'
+      portrait: 'https://s3-us-west-2.amazonaws.com/assessment-images/galvanize_reads/photos/steve_holden.jpg'
     }),
 
     knex('authors').insert({
