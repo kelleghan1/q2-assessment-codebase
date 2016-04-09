@@ -200,8 +200,11 @@ router.post('/books/add', function(req, res, next) {
 
 router.get('/books/add', function(req, res, next) {
   knex('authors')
-  .then(function(authors){
-    res.render('addbook', {authors: authors});
+  .then(function(authors) {
+    knex('books')
+    .then(function(books) {
+      res.render('addauthor', {authors: authors, books: books});
+    })
   })
 });
 
