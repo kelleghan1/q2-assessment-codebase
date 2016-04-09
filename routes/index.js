@@ -13,7 +13,7 @@ router.post('/authors/add', function(req, res, next) {
     portrait: req.body.portrait
   })
   .then(function(authors){
-    res.redirect('authors')
+    res.redirect('/authors')
   })
 });
 
@@ -36,6 +36,27 @@ router.post('/authors/delete/:id', function(req, res, next) {
   })
 })
 
+router.get('/authors/edit/:id', function(req, res, next) {
+  knex('authors')
+  .where('id', req.params.id).first()
+  .then(function(author) {
+    res.render('authoredit', {author: author})
+  })
+})
+
+router.post('/authors/edit/:id', function(req, res, next) {
+  knex('authors')
+  .where('id', req.params.id)
+  .update({
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    portrait: req.body.portrait,
+    biography: req.body.biography
+  })
+  .then(function(authors) {
+    res.redirect('/authors')
+  })
+})
 
 router.get('/authors', function(req, res, next) {
   var authorselect = [];
@@ -106,6 +127,22 @@ router.get('/authors/:id', function(req, res, next) {
     }
   })
 
+  var bookselect = [];
+
+  knex('books')
+  .then(function(bookresult){
+    for (var i = 0; i < bookresult.length; i++) {
+      bookselect.push({
+        id: bookresult[i].id,
+        title: bookresult[i].title,
+        genre: bookresult[i].genre,
+        description: bookresult[i].description,
+        cover: bookresult[i].cover,
+        names: []
+      })
+    }
+  })
+
   knex('authors')
   .innerJoin('authors_books', 'authors.id', 'authors_books.author_id')
   .innerJoin('books', 'authors_books.book_id', 'books.id')
@@ -119,7 +156,7 @@ router.get('/authors/:id', function(req, res, next) {
         }
       }
     }
-    res.render('authors', {authors: authorselect, data: data});
+    res.render('authors', {authors: authorselect, books: bookselect});
   })
 });
 

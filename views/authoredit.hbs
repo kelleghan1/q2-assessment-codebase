@@ -15,11 +15,11 @@
 
   <article>
 
-    <form action="/authors/add" method="post">
+    <form action="/authors/edit/{{author.id}}" method="post">
       <table>
         <tr>
           <td>
-            <h3>Add Author</h3>
+            <h3>Edit Author</h3>
           </td>
         </tr>
 
@@ -28,7 +28,7 @@
             First Name
           </td>
           <td>
-            <input type="text" name="first_name" value="">
+            <input type="text" name="first_name" value="{{author.first_name}}">
           </td>
         </tr>
 
@@ -37,7 +37,7 @@
             Last Name
           </td>
           <td>
-            <input type="text" name="last_name" value="">
+            <input type="text" name="last_name" value="{{author.last_name}}">
           </td>
         </tr>
 
@@ -46,17 +46,16 @@
             Portrait URL
           </td>
           <td>
-            <input type="text" name="portrait" value="">
+            <input type="text" name="portrait" value="{{author.portrait}}">
           </td>
         </tr>
-
 
         <tr>
           <td>
             Biography
           </td>
           <td>
-            <input class='longinput' type="text" name="biography" value="">
+            <input class='longinput' type="text" name="biography" value="{{author.biography}}">
           </td>
         </tr>
 
