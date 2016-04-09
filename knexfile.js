@@ -1,8 +1,11 @@
+require('dotenv').load();
+
+
 module.exports = {
 
   development: {
     client: 'postgresql',
-    connection: 'postgres://localhost/q2assessment',
+    connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
       max: 10
@@ -11,5 +14,14 @@ module.exports = {
       directory: './seeds/'
     }
 
+  },
+
+  production: {
+    client: 'postgresql',
+    connection: process.env.DATABASE_URL,
+    pool : {
+      min: 2,
+      max: 10
+    }
   }
 };
