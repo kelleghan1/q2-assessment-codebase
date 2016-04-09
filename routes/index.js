@@ -4,9 +4,6 @@ var knex = require('knex')(require('../knexfile')['development']);
 
 /* GET home page. */
 
-
-
-
 router.post('/authors/add', function(req, res, next) {
   knex('authors')
   .insert({
@@ -16,7 +13,7 @@ router.post('/authors/add', function(req, res, next) {
     portrait: req.body.portrait
   })
   .then(function(authors){
-    res.redirect('/authors')
+    res.redirect('authors')
   })
 });
 
@@ -47,6 +44,22 @@ router.get('/authors', function(req, res, next) {
     }
   })
 
+  var bookselect = [];
+
+  knex('books')
+  .then(function(bookresult){
+    for (var i = 0; i < bookresult.length; i++) {
+      bookselect.push({
+        id: bookresult[i].id,
+        title: bookresult[i].title,
+        genre: bookresult[i].genre,
+        description: bookresult[i].description,
+        cover: bookresult[i].cover,
+        names: []
+      })
+    }
+  })
+
   knex('authors')
   .innerJoin('authors_books', 'authors.id', 'authors_books.author_id')
   .innerJoin('books', 'authors_books.book_id', 'books.id')
@@ -60,7 +73,7 @@ router.get('/authors', function(req, res, next) {
         }
       }
     }
-    res.render('authors', {authors: authorselect, data: data});
+    res.render('authors', {authors: authorselect, books: bookselect});
   })
 });
 
@@ -100,11 +113,6 @@ router.get('/authors/:id', function(req, res, next) {
   })
 });
 
-
-
-
-
-
 router.post('/books/add', function(req, res, next) {
   var authors = req.body.authors
   var authors_ids = authors instanceof Array ? authors : [ authors ];
@@ -130,14 +138,20 @@ router.post('/books/add', function(req, res, next) {
 });
 
 router.get('/books/add', function(req, res, next) {
-
   knex('authors')
   .then(function(authors){
     res.render('addbook', {authors: authors});
   })
 });
 
-
+// router.get('/books/delete/{{id}}', function(req, res, next) {
+//   knex('books')
+//   .where('id', req.params.id)
+//   .del()
+//   .then(function() {
+//     res.redirect('/books')
+//   })
+// })
 
 router.get('/books', function(req, res, next) {
   var bookselect = [];
@@ -156,6 +170,22 @@ router.get('/books', function(req, res, next) {
     }
   })
 
+  var authorselect = [];
+
+  knex('authors')
+  .then(function(authorresult){
+    for (var i = 0; i < authorresult.length; i++) {
+      authorselect.push({
+        id: authorresult[i].id,
+        last_name: authorresult[i].last_name,
+        first_name: authorresult[i].first_name,
+        portrait: authorresult[i].portrait,
+        biography: authorresult[i].biography,
+        titles: []
+      })
+    }
+  })
+
   knex('books')
   .innerJoin('authors_books', 'books.id', 'authors_books.book_id')
   .innerJoin('authors', 'authors_books.author_id', 'authors.id')
@@ -168,7 +198,7 @@ router.get('/books', function(req, res, next) {
         }
       }
     }
-    res.render('books', {books: bookselect});
+    res.render('books', {books: bookselect, authors: authorselect});
   })
 });
 
@@ -206,23 +236,6 @@ router.get('/books/:id', function(req, res, next) {
     res.render('books', {books: bookselect, data: data});
   })
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -3,13 +3,13 @@
 
     <a href="/authors"><h2>Authors</h2></a>
     {{#authors}}
-    <a href="/authors/{{authors.id}}"><p>{{last_name}}</p></a>
+    <a href="/authors/{{id}}"><p>{{last_name}}</p></a>
     {{/authors}}
 
     <a href="/books"><h2>Books</h2></a>
-    {{#title}}
+    {{#books}}
     <a href="/books/{{id}}"><p>{{title}}</p></a>
-    {{/title}}
+    {{/books}}
 
 
   </nav>
@@ -27,8 +27,9 @@
 
           <h1>{{first_name}} {{last_name}}</h1>
         </a>
-        <h3>{{titles}}</h3>
-        <p>{{biography}}</p>
+        {{#each titles}}
+        <h3>{{this}}</h2>
+          {{/each}}        <p>{{biography}}</p>
       </div>
 
     </div>
