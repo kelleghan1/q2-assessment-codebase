@@ -1,0 +1,84 @@
+<div class='container'>
+
+  <nav>
+    <a href="/authors"><h2>Authors</h2></a>
+    {{#authors}}
+    <a href="/authors/{{id}}"><p>{{last_name}}</p></a>
+    {{/authors}}
+    <a href="/books"><h2>Books</h2></a>
+    {{#books}}
+    <a href="/books/{{id}}"><p>{{title}}</p></a>
+    {{/books}}
+  </nav>
+
+
+
+  <article>
+
+    <form action="/books/edit/{{book.id}}" method="post">
+      <table>
+        <tr>
+          <td>
+            <h3>Edit Book</h3>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Title
+          </td>
+          <td>
+            <input type="text" name="title" value="{{book.title}}">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Genre
+          </td>
+          <td>
+            <input type="text" name="genre" value="{{book.genre}}">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Cover URL
+          </td>
+          <td>
+            <input type="text" name="cover" value="{{book.cover}}">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Description
+          </td>
+          <td>
+            <input class='longinput' type="text" name="description" value="{{book.description}}">
+          </td>
+        </tr>
+
+
+        <tr>
+          <td>
+            <br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <input type="submit" value="submit">
+          </td>
+        </tr>
+
+      </table>
+    </form>
+
+
+
+  </article>
+
+
+
+</div>

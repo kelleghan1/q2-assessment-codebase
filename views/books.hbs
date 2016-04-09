@@ -25,12 +25,12 @@
         {{#each names}}
         <h3>{{this}}</h2>
           {{/each}}
-          <h3>{{genre}}</h3>
+          <h4>{{genre}}</h4>
           <p>{{description}}</p>
           <form action="/books/delete/{{id}}" method="post">
             <input type="submit" value="Delete Book">
           </form>
-          <form action="/books/edit/{{id}}" method="post">
+          <form action="/books/edit/{{id}}" method="get">
             <input type="submit" value="Update Book">
           </form>
         </div>

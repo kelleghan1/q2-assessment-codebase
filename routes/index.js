@@ -200,6 +200,32 @@ router.post('/books/delete/:id', function(req, res, next) {
   })
 })
 
+router.get('/books/edit/:id', function(req, res, next) {
+  knex('books')
+  .where('id', req.params.id).first()
+  .then(function(book) {
+    res.render('bookedit', {book: book})
+  })
+})
+
+router.post('/books/edit/:id', function(req, res, next) {
+  knex('books')
+  .where('id', req.params.id)
+  .update({
+    title: req.body.title,
+    genre: req.body.genre,
+    cover: req.body.cover,
+    description: req.body.description
+  })
+  .then(function(books) {
+    res.redirect('/books')
+  })
+})
+
+
+
+
+
 router.get('/books', function(req, res, next) {
   var bookselect = [];
 
