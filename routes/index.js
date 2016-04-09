@@ -203,7 +203,7 @@ router.get('/books/add', function(req, res, next) {
   .then(function(authors) {
     knex('books')
     .then(function(books) {
-      res.render('addauthor', {authors: authors, books: books});
+      res.render('addbook', {authors: authors, books: books});
     })
   })
 });
