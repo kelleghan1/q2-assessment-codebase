@@ -111,9 +111,26 @@ router.get('/authors', function(req, res, next) {
 router.get('/authors/:id', function(req, res, next) {
   var authorselect = [];
   var currentAuthor = req.params.id;
+  var bookselect = [];
+  var authorsingle = [];
+
 
   knex('authors')
   .where({id: currentAuthor})
+  .then(function(authorresult){
+    for (var i = 0; i < authorresult.length; i++) {
+      authorsingle.push({
+        id: authorresult[i].id,
+        last_name: authorresult[i].last_name,
+        first_name: authorresult[i].first_name,
+        portrait: authorresult[i].portrait,
+        biography: authorresult[i].biography,
+        titles: []
+      })
+    }
+  })
+
+  knex('authors')
   .then(function(authorresult){
     for (var i = 0; i < authorresult.length; i++) {
       authorselect.push({
@@ -126,8 +143,6 @@ router.get('/authors/:id', function(req, res, next) {
       })
     }
   })
-
-  var bookselect = [];
 
   knex('books')
   .then(function(bookresult){
@@ -148,7 +163,6 @@ router.get('/authors/:id', function(req, res, next) {
   .innerJoin('books', 'authors_books.book_id', 'books.id')
   // .select('books.title', 'author_id')
   .then(function(data) {
-
     for (var i = 0; i < authorselect.length; i++) {
       for (var j = 0; j < data.length; j++) {
         if (authorselect[i].id == data[j].author_id) {
@@ -156,7 +170,7 @@ router.get('/authors/:id', function(req, res, next) {
         }
       }
     }
-    res.render('authors', {authors: authorselect, books: bookselect});
+    res.render('authorsingle', {authorsingle: authorsingle, authors: authorselect, books: bookselect});
   })
 });
 
@@ -276,11 +290,28 @@ router.get('/books', function(req, res, next) {
 });
 
 router.get('/books/:id', function(req, res, next) {
-  var currentBook = req.params.id;
+  var currentbook = req.params.id;
   var bookselect = [];
+  var authorselect = [];
+  var booksingle = [];
 
   knex('books')
-  .where({id: currentBook})
+  .where({id: currentbook})
+  .then(function(bookresult){
+    for (var i = 0; i < bookresult.length; i++) {
+      booksingle.push({
+        id: bookresult[i].id,
+        title: bookresult[i].title,
+        genre: bookresult[i].genre,
+        description: bookresult[i].description,
+        cover: bookresult[i].cover,
+        names: []
+      })
+    }
+  })
+
+
+  knex('books')
   .then(function(bookresult){
     for (var i = 0; i < bookresult.length; i++) {
       bookselect.push({
@@ -294,19 +325,33 @@ router.get('/books/:id', function(req, res, next) {
     }
   })
 
+  knex('authors')
+  .then(function(authorresult){
+    for (var i = 0; i < authorresult.length; i++) {
+      authorselect.push({
+        id: authorresult[i].id,
+        last_name: authorresult[i].last_name,
+        first_name: authorresult[i].first_name,
+        portrait: authorresult[i].portrait,
+        biography: authorresult[i].biography,
+        titles: []
+      })
+    }
+  })
+
   knex('books')
   .innerJoin('authors_books', 'books.id', 'authors_books.book_id')
   .innerJoin('authors', 'authors_books.author_id', 'authors.id')
   // .select('first_name', 'last_name', 'author_id')
-  .then(function(data) {
+  .then(function(books) {
     for (var i = 0; i < bookselect.length; i++) {
-      for (var j = 0; j < data.length; j++) {
-        if (bookselect[i].id == data[j].book_id) {
-          bookselect[i].names.push(data[j].first_name + ' ' + data[j].last_name)
+      for (var j = 0; j < books.length; j++) {
+        if (bookselect[i].id == books[j].book_id) {
+          bookselect[i].names.push(books[j].first_name + ' ' + books[j].last_name)
         }
       }
     }
-    res.render('books', {books: bookselect, data: data});
+    res.render('booksingle', {booksingle: booksingle, books: bookselect, authors: authorselect});
   })
 });
 

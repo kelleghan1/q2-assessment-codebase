@@ -1,0 +1,44 @@
+<div class='container'>
+  <nav>
+
+    <a href="/authors"><h2>Authors</h2></a>
+    {{#authors}}
+    <a href="/authors/{{id}}"><p>{{last_name}}</p></a>
+    {{/authors}}
+
+    <a href="/books"><h2>Books</h2></a>
+    {{#books}}
+    <a href="/books/{{id}}"><p>{{title}}</p></a>
+    {{/books}}
+
+  </nav>
+
+  <article>
+
+    {{#booksingle}}
+
+    <div class='bookwrap'>
+
+      <a href="/books/{{id}}"><img class='bookcover' src="{{cover}}" /></a>
+      <div class='infowrap'>
+        <a href="/books/{{id}}"><h1>{{title}}</h1></a>
+        {{#each names}}
+        <h3>{{this}}</h3>
+          {{/each}}
+          <h4>{{genre}}</h4>
+          <p>{{description}}</p>
+          <form action="/books/delete/{{id}}" method="post">
+            <input type="submit" value="Delete Book">
+          </form>
+          <form action="/books/edit/{{id}}" method="get">
+            <input type="submit" value="Update Book">
+          </form>
+        </div>
+
+      </div>
+
+      {{/booksingle}}
+
+    </article>
+
+  </div>
