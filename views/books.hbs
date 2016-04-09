@@ -9,9 +9,9 @@
     {{/each}}
 
     <a href="/books"><h2>Books</h2></a>
-    {{#data}}
+    {{#books}}
     <a href="/books/{{id}}"><p>{{title}}</p></a>
-    {{/data}}
+    {{/books}}
 
   </nav>
 
@@ -21,7 +21,7 @@
 
     <div class='bookwrap'>
 
-      <a href="/{{id}}"><img class='bookcover' src="{{cover}}" /></a>
+      <a href="/books/{{id}}"><img class='bookcover' src="{{cover}}" /></a>
       <div class='infowrap'>
         <a href="/books/{{id}}"><h1>{{title}}</h1></a>
         {{#each names}}
