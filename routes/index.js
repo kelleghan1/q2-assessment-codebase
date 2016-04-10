@@ -163,10 +163,10 @@ router.get('/authors/:id', function(req, res, next) {
   .innerJoin('books', 'authors_books.book_id', 'books.id')
   // .select('books.title', 'author_id')
   .then(function(data) {
-    for (var i = 0; i < authorselect.length; i++) {
+    for (var i = 0; i < authorsingle.length; i++) {
       for (var j = 0; j < data.length; j++) {
-        if (authorselect[i].id == data[j].author_id) {
-          authorselect[i].titles.push(data[j].title )
+        if (authorsingle[i].id == data[j].author_id) {
+          authorsingle[i].titles.push(data[j].title )
         }
       }
     }
@@ -239,10 +239,6 @@ router.post('/books/edit/:id', function(req, res, next) {
   })
 })
 
-
-
-
-
 router.get('/books', function(req, res, next) {
   var bookselect = [];
 
@@ -313,7 +309,6 @@ router.get('/books/:id', function(req, res, next) {
     }
   })
 
-
   knex('books')
   .then(function(bookresult){
     for (var i = 0; i < bookresult.length; i++) {
@@ -347,10 +342,10 @@ router.get('/books/:id', function(req, res, next) {
   .innerJoin('authors', 'authors_books.author_id', 'authors.id')
   // .select('first_name', 'last_name', 'author_id')
   .then(function(books) {
-    for (var i = 0; i < bookselect.length; i++) {
+    for (var i = 0; i < booksingle.length; i++) {
       for (var j = 0; j < books.length; j++) {
-        if (bookselect[i].id == books[j].book_id) {
-          bookselect[i].names.push(books[j].first_name + ' ' + books[j].last_name)
+        if (booksingle[i].id == books[j].book_id) {
+          booksingle[i].names.push(books[j].first_name + ' ' + books[j].last_name)
         }
       }
     }
@@ -358,17 +353,8 @@ router.get('/books/:id', function(req, res, next) {
   })
 });
 
-
-
-
-
-
 router.get('/', function(req, res, next) {
   res.render('index');
 });
-
-
-
-
 
 module.exports = router;
