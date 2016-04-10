@@ -62,6 +62,7 @@ router.get('/authors', function(req, res, next) {
   var authorselect = [];
 
   knex('authors')
+  .orderBy('last_name')
   .then(function(authorresult){
     for (var i = 0; i < authorresult.length; i++) {
       authorselect.push({
@@ -243,6 +244,7 @@ router.get('/books', function(req, res, next) {
   var bookselect = [];
 
   knex('books')
+  .orderBy('title')
   .then(function(bookresult){
     for (var i = 0; i < bookresult.length; i++) {
       bookselect.push({
